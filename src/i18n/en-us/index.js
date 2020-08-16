@@ -9,7 +9,7 @@ export default {
     delete: 'Delete',
     deleted: "Successfully deleted!"
   },
-  add: {
+  editor: {
     title: "Title",
     content: "Content",
     saved: "Successfully saved!",

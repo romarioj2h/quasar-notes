@@ -11,10 +11,18 @@ export class NotesDAO {
     }
 
     save(note) {
-        return db.notes.add(note);
+        if (note.id) {
+            return db.notes.update(note.id, note);
+        } else {
+            return db.notes.add(note);
+        }
     }
 
     remove(note) {
         return db.notes.delete(note.id);
+    }
+
+    getById(id) {
+        return db.notes.where({id: id}).first();
     }
 }

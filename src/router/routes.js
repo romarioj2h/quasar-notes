@@ -5,7 +5,12 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'add', component: () => import('pages/Add.vue') }
+      { path: 'add', component: () => import('pages/Editor.vue') },
+      { path: 'edit/:id', component: () => import('pages/Editor.vue'), props(route) {
+        const props = {...route.params};
+        props.id =+ props.id;
+        return props; 
+      } }
     ]
   },
 
