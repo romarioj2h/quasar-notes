@@ -1,7 +1,7 @@
 <template>
-  <q-page class="flex flex-center">
+  <div>
     <div v-for="note in notes">
-      <q-card class="my-card bg-secondary text-white">
+      <q-card class="my-card bg-blue-grey text-white q-my-md">
         <q-card-section>
           <div class="text-h6">{{ note.title }}</div>
         </q-card-section>
@@ -14,11 +14,14 @@
 
         <q-card-actions>
           <q-btn flat>{{ $t('index.edit') }}</q-btn>
-          <q-btn flat>{{ $t('index.delete') }}</q-btn>
+          <q-btn flat @click="remove(note)">{{ $t('index.delete') }}</q-btn>
         </q-card-actions>
       </q-card>
     </div>
-  </q-page>
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-btn to="/add" fab icon="add" color="primary" />
+    </q-page-sticky>
+  </div>
 </template>
 
 <script>
@@ -31,10 +34,21 @@ export default {
       notes: []
     }
   },
+  methods: {
+    remove: function(note) {
+      NotesDAO.getInstance().remove(note).then(() => {
+        this.refresh();
+        this.$q.notify(this.$t('index.deleted'));
+      });
+    },
+    refresh: function() {
+      NotesDAO.getInstance().get().then(result => {
+        this.notes = result;
+      });
+    }
+  },
   mounted: function() {
-    NotesDAO.getInstance().get().then(result => {
-      this.notes = result;
-    });
+    this.refresh();
   }
 }
 </script>

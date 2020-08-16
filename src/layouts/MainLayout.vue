@@ -39,7 +39,11 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <div class="row q-ma-md">
+        <div class="col-12">
+          <router-view />
+        </div>
+      </div>
     </q-page-container>
   </q-layout>
 </template>

@@ -7,6 +7,14 @@ export class NotesDAO {
     }
 
     get() {
-        return db.notes.toArray();
+        return db.notes.reverse().toArray();
+    }
+
+    save(note) {
+        return db.notes.add(note);
+    }
+
+    remove(note) {
+        return db.notes.delete(note.id);
     }
 }

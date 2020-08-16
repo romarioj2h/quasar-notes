@@ -6,6 +6,13 @@ export default {
   success: 'Action was successful',
   index: {
     edit: 'Edit',
-    delete: 'Delete'
+    delete: 'Delete',
+    deleted: "Successfully deleted!"
+  },
+  add: {
+    title: "Title",
+    content: "Content",
+    saved: "Successfully saved!",
+    fieldIsRequired: "Field is required"
   }
 }
