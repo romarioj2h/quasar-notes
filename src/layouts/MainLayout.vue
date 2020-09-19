@@ -54,7 +54,7 @@ import EssentialLink from 'components/EssentialLink.vue'
 const linksData = [
   {
     title: 'Home',
-    caption: 'See all your notes',
+    caption: 'layout.home.caption',
     icon: 'home',
     link: '#/'
   }
