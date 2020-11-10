@@ -4,9 +4,12 @@ import messages from 'src/i18n'
 
 Vue.use(VueI18n)
 
+var lang = localStorage.getItem('lang');
+lang = lang ? lang : 'pt-br';
+
 const i18n = new VueI18n({
-  locale: 'pt-br',
-  fallbackLocale: 'pt-br',
+  locale: lang,
+  fallbackLocale: lang,
   messages
 })
 
